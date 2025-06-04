@@ -31,15 +31,15 @@ class BookController extends Controller
     }
 
     public function update(Request $request, Book $book)
-    {
+    {        
         $validated = $request->validate([
             'judul' => 'required',
             'penulis' => 'required',
             'is_available' => 'required',
         ]);
 
-        $newBook = $book->update($validated);
-        return JsonResource::make($newBook);
+        $book->update($validated);
+        return JsonResource::make($book);
     }
 
     public function destroy(int $id)
