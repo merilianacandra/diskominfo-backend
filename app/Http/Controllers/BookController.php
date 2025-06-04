@@ -47,4 +47,16 @@ class BookController extends Controller
         Book::query()->where('id', '=', $id)->first()->delete();
         return response()->json(['data' => new stdClass]);
     }
+
+    public function updateStatus(Request $request, Book $book)
+    {
+        $validated = $request->validate([
+            'judul' => 'sometimes|required',
+            'penulis' => 'sometimes|required',
+            'is_available' => 'sometimes|required|boolean',
+        ]);
+
+        $book->update($validated);
+        return JsonResource::make($book);
+    }
 }
