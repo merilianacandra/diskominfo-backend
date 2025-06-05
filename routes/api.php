@@ -21,5 +21,5 @@ Route::get('/user', [UserController::class, 'index']);
 Route::post('/user', [UserController::class, 'store']);
 
 Route::get('/transaction', [TransactionController::class, 'index']);
-Route::post('/transaction/borrow', [TransactionController::class, 'borrow']);
-// Route::post('/transaction/return', [TransactionController::class, 'store']);
+Route::post('/transaction', [TransactionController::class, 'borrow']);
+Route::put('/transaction/{transaction}', [TransactionController::class, 'return']);

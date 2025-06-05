@@ -31,4 +31,22 @@ class TransactionController extends Controller
 
         return JsonResource::make($transaction);
     }
+
+    public function return(Request $request, Transaction $transaction)
+    {
+        $validated = $request->validate([
+            'buku_id' => 'required',
+            'user_id' => 'required',
+            'tanggal_pinjam' => 'required',
+            'tanggal_kembali' => 'required',
+        ]);
+
+        $transaction->update($validated);
+
+        $transaction->book()->update([
+            'is_available' => true
+        ]);
+
+        return JsonResource::make($transaction);
+    }
 }
