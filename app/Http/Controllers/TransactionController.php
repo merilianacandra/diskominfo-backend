@@ -26,7 +26,7 @@ class TransactionController extends Controller
         $transaction = Transaction::create($validated);
 
         $transaction->book()->update([
-            'status' => true
+            'is_available' => false
         ]);
 
         return JsonResource::make($transaction);
