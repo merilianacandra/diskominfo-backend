@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function() {
@@ -18,3 +19,7 @@ Route::put('book/{book}', [BookController::class, 'updateStatus']);
 
 Route::get('/user', [UserController::class, 'index']);
 Route::post('/user', [UserController::class, 'store']);
+
+Route::get('/transaction', [TransactionController::class, 'index']);
+Route::post('/transaction/borrow', [TransactionController::class, 'borrow']);
+// Route::post('/transaction/return', [TransactionController::class, 'store']);
