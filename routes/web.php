@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
+use Inertia\Inertia;
 
-
-Route::get('/', function() {
-    return view('welcome');
+Route::get('/', function () {
+    return Inertia::render('Welcome');
 });
 
 Route::get('/book', [BookController::class, 'index']);
