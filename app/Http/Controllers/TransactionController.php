@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TransactionListResource;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -10,8 +11,8 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transaction = Transaction::get();
-        return JsonResource::collection($transaction);
+        $transaction = Transaction::with(['user', 'book'])->get();
+        return TransactionListResource::collection($transaction);
     }
 
     // (Payload) -> methodnya post
