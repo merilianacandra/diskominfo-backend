@@ -38,13 +38,15 @@ class BookController extends Controller
             'is_available' => 'required',
         ]);
 
+
         $book->update($validated);
         return JsonResource::make($book);
     }
 
-    public function destroy(int $id)
+    public function destroy(Book $book)
     {
-        Book::query()->where('id', '=', $id)->first()->delete();
+        $book->delete();
+        // Book::query()->where('id', '=', $id)->first()->delete();
         return response()->json(['data' => new stdClass]);
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -15,6 +14,7 @@ class TransactionController extends Controller
         return JsonResource::collection($transaction);
     }
 
+    // (Payload) -> methodnya post
     public function borrow(Request $request)
     {
         $validated = $request->validate([
@@ -32,6 +32,7 @@ class TransactionController extends Controller
         return JsonResource::make($transaction);
     }
 
+    // (Payload, Params) -> method nya put
     public function return(Request $request, Transaction $transaction)
     {
         $validated = $request->validate([
